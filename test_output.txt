@@ -1,0 +1,23 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.14.3, pytest-7.4.3, pluggy-1.6.0
+rootdir: C:\Sem VI\software engineering\capstone project\project\copy2\time_pass
+configfile: pytest.ini
+plugins: anyio-4.13.0, hypothesis-6.88.1
+collected 6 items
+
+tests\test_admin.py F
+
+================================== FAILURES ===================================
+_____________________ test_admin_access_control_property ______________________
+
+msg = 'Using `@settings` on a test without `@given` is completely pointless.'
+
+    def raise_hypothesis_usage_error(msg):
+>       raise InvalidArgument(msg)
+E       hypothesis.errors.InvalidArgument: Using `@settings` on a test without `@given` is completely pointless.
+
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\_hypothesis_pytestplugin.py:205: InvalidArgument
+=========================== short test summary info ===========================
+FAILED tests/test_admin.py::test_admin_access_control_property - hypothesis.e...
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+============================== 1 failed in 0.36s ==============================

@@ -1,0 +1,333 @@
+/**
+ * Header and Navigation Fixes
+ * Fixes alignment issues and improves responsive design
+ */
+
+/* Header Styles */
+header {
+    padding: 15px 5%;
+    background-color: var(--bg-primary, white);
+    box-shadow: var(--shadow-md);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--theme-transition);
+}
+
+body.dark-theme header {
+    background-color: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Logo Styles */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo i {
+    font-size: 24px;
+    color: var(--primary-color);
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: var(--text-primary);
+}
+
+/* Main Navigation */
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.nav-links a.active {
+    color: var(--primary-color);
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* User Menu */
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: 16px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    object-fit: cover;
+}
+
+.user-avatar-placeholder {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.user-name {
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-admin,
+.btn-logout {
+    padding: 6px 12px;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.btn-admin {
+    background: var(--accent-color);
+}
+
+.btn-admin:hover {
+    background: #d97706;
+    transform: translateY(-1px);
+}
+
+.btn-logout {
+    background: var(--gray-color);
+}
+
+.btn-logout:hover {
+    background: #4b5563;
+    transform: translateY(-1px);
+}
+
+/* Auth Buttons */
+.auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 16px;
+}
+
+.btn-login,
+.btn-signup {
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-login {
+    color: var(--primary-color);
+    background: transparent;
+}
+
+.btn-login:hover {
+    background: rgba(79, 70, 229, 0.1);
+}
+
+.btn-signup {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-signup:hover {
+    background: #4338ca;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+    margin-left: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-primary);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+#theme-toggle:hover {
+    background-color: var(--hover-overlay);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+#theme-toggle:active {
+    transform: scale(0.95);
+}
+
+#theme-toggle i {
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .user-name {
+        display: none;
+    }
+    
+    .nav-links {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 12px 4%;
+    }
+    
+    .logo h1 {
+        font-size: 1.2rem;
+    }
+    
+    .logo i {
+        font-size: 20px;
+    }
+    
+    .nav-links {
+        gap: 12px;
+    }
+    
+    .nav-links a {
+        font-size: 0.85rem;
+    }
+    
+    .user-menu,
+    .auth-buttons {
+        margin-left: 8px;
+    }
+    
+    .btn-admin,
+    .btn-logout,
+    .btn-login,
+    .btn-signup {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+    }
+    
+    .btn-admin span,
+    .btn-logout span,
+    .btn-login span,
+    .btn-signup span {
+        display: none;
+    }
+    
+    #theme-toggle {
+        width: 32px;
+        height: 32px;
+        margin-left: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 10px 3%;
+        flex-wrap: wrap;
+    }
+    
+    .logo h1 {
+        font-size: 1rem;
+    }
+    
+    .main-nav {
+        gap: 8px;
+    }
+    
+    .nav-links {
+        gap: 8px;
+    }
+    
+    .user-avatar,
+    .user-avatar-placeholder {
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
+    }
+}

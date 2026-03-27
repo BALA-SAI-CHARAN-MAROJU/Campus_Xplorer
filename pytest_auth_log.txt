@@ -1,0 +1,203 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.14.3, pytest-7.4.3, pluggy-1.6.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
+hypothesis profile 'default' -> database=DirectoryBasedExampleDatabase(WindowsPath('C:/Sem VI/software engineering/capstone project/project/copy2/time_pass/.hypothesis/examples'))
+rootdir: C:\Sem VI\software engineering\capstone project\project\copy2\time_pass
+configfile: pytest.ini
+plugins: anyio-4.13.0, hypothesis-6.88.1
+collecting ... collected 9 items
+
+tests/test_auth.py::TestOAuthIntegration::test_login_page_displays_oauth_options PASSED [ 11%]
+tests/test_auth.py::TestOAuthIntegration::test_signup_page_displays_oauth_options PASSED [ 22%]
+tests/test_auth.py::TestOAuthIntegration::test_oauth_integration_consistency_property PASSED [ 33%]
+tests/test_auth.py::TestOAuthIntegration::test_oauth_callback_handling PASSED [ 44%]
+tests/test_auth.py::TestOAuthIntegration::test_authenticated_user_state_property PASSED [ 55%]
+tests/test_auth.py::TestOAuthIntegration::test_logout_functionality PASSED [ 66%]
+tests/test_auth.py::TestOAuthIntegration::test_profile_update_functionality FAILED [ 77%]
+tests/test_auth.py::TestOAuthIntegration::test_admin_user_creation PASSED [ 88%]
+tests/test_auth.py::TestOAuthIntegration::test_user_model_validation PASSED [100%]
+
+================================== FAILURES ===================================
+___________ TestOAuthIntegration.test_profile_update_functionality ____________
+
+self = <tests.test_auth.TestOAuthIntegration object at 0x00000222C2D699D0>
+client = <FlaskClient <Flask 'app'>>, app = <Flask 'app'>
+
+    @given(st.text(min_size=1, max_size=50))
+>   @settings(suppress_health_check=[HealthCheck.function_scoped_fixture])
+
+tests\test_auth.py:180: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <tests.test_auth.TestOAuthIntegration object at 0x00000222C2D699D0>
+client = <FlaskClient <Flask 'app'>>, app = <Flask 'app'>
+campus_preference = '0'
+
+    @given(st.text(min_size=1, max_size=50))
+    @settings(suppress_health_check=[HealthCheck.function_scoped_fixture])
+    def test_profile_update_functionality(self, client, app, campus_preference):
+        """Test profile update functionality."""
+        with app.app_context():
+            # Create a test user
+            user = User(
+                id=str(uuid.uuid4()),
+                google_id=f"google_{uuid.uuid4()}",
+                email='test@example.com',
+                name='Test User'
+            )
+            db.session.add(user)
+            db.session.commit()
+    
+            try:
+                # Simulate login
+                with client.session_transaction() as sess:
+                    sess['_user_id'] = user.id
+                    sess['_fresh'] = True
+    
+                # Test profile update
+                update_data = {
+                    'preferred_campus': campus_preference[:20],  # Limit length
+                    'theme_preference': 'dark'
+                }
+    
+                response = client.post('/auth/profile/update',
+                                     data=update_data,
+                                     follow_redirects=True)
+    
+                # Should redirect or return success
+>               assert response.status_code in [302, 200, 404]  # 404 acceptable if route not implemented
+E               assert 500 in [302, 200, 404]
+E                +  where 500 = <WrapperTestResponse streamed [500 INTERNAL SERVER ERROR]>.status_code
+E               Falsifying example: test_profile_update_functionality(
+E                   self=<tests.test_auth.TestOAuthIntegration object at 0x00000222C2D699D0>,
+E                   client=<FlaskClient <Flask 'app'>>,
+E                   app=<Flask 'app'>,
+E                   campus_preference='0',  # or any other generated value
+E               )
+
+tests\test_auth.py:211: AssertionError
+------------------------------ Captured log call ------------------------------
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+ERROR    app:routes.py:144 Profile update error: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+============================== warnings summary ===============================
+tests/test_auth.py::TestOAuthIntegration::test_oauth_callback_handling
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\app\auth\routes.py:91: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    user.last_login = datetime.utcnow()
+
+tests/test_auth.py: 206 warnings
+  C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\sql\schema.py:3624: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    return util.wrap_callable(lambda ctx: fn(), fn)  # type: ignore
+
+tests/test_auth.py::TestOAuthIntegration::test_oauth_callback_handling
+  C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\flask_login\login_manager.py:488: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    expires = datetime.utcnow() + duration
+
+tests/test_auth.py: 204 warnings
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\app\auth\routes.py:18: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    return User.query.get(user_id)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_auth.py::TestOAuthIntegration::test_profile_update_functionality
+================== 1 failed, 8 passed, 412 warnings in 6.05s ==================

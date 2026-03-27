@@ -1,0 +1,60 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.14.3, pytest-7.4.3, pluggy-1.6.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
+hypothesis profile 'default' -> database=DirectoryBasedExampleDatabase(WindowsPath('C:/Sem VI/software engineering/capstone project/project/copy2/time_pass/.hypothesis/examples'))
+rootdir: C:\Sem VI\software engineering\capstone project\project\copy2\time_pass
+configfile: pytest.ini
+plugins: anyio-4.13.0, hypothesis-6.88.1
+collecting ... collected 55 items
+
+tests/test_setup.py::TestProjectSetup::test_app_creation PASSED          [  1%]
+tests/test_setup.py::TestProjectSetup::test_database_initialization PASSED [  3%]
+tests/test_setup.py::TestProjectSetup::test_authentication_ui_visibility_property PASSED [  5%]
+tests/test_setup.py::TestProjectSetup::test_login_page_accessibility PASSED [  7%]
+tests/test_setup.py::TestProjectSetup::test_config_loading PASSED        [  9%]
+tests/test_setup.py::TestProjectSetup::test_user_model_creation FAILED   [ 10%]
+
+================================== FAILURES ===================================
+__________________ TestProjectSetup.test_user_model_creation __________________
+
+self = <tests.test_setup.TestProjectSetup object at 0x000001B8E274D480>
+app = <Flask 'app'>
+
+    @given(st.emails())
+>   @settings(suppress_health_check=[HealthCheck.function_scoped_fixture])
+
+tests\test_setup.py:108: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <tests.test_setup.TestProjectSetup object at 0x000001B8E274D480>
+app = <Flask 'app'>, email = '0@A.ac'
+
+    @given(st.emails())
+    @settings(suppress_health_check=[HealthCheck.function_scoped_fixture])
+    def test_user_model_creation(self, app, email):
+        """Test user model can be created with various email formats."""
+        with app.app_context():
+            user = User(
+                id=str(uuid.uuid4()),
+                google_id=f"google_{uuid.uuid4()}",
+                email=email,
+                name="Test User"
+            )
+    
+            # Test that user object can be created
+            assert user.email == email
+            assert user.name == "Test User"
+>           assert user.is_admin is False  # Default value
+E           assert None is False
+E            +  where None = <User 0@A.ac>.is_admin
+E           Falsifying example: test_user_model_creation(
+E               self=<tests.test_setup.TestProjectSetup object at 0x000001B8E274D480>,
+E               app=<Flask 'app'>,
+E               email='0@A.ac',  # or any other generated value
+E           )
+
+tests\test_setup.py:122: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_setup.py::TestProjectSetup::test_user_model_creation - asse...
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+========================= 1 failed, 5 passed in 4.12s =========================

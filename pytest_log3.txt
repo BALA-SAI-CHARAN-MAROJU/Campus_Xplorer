@@ -1,0 +1,278 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.14.3, pytest-7.4.3, pluggy-1.6.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
+hypothesis profile 'default' -> database=DirectoryBasedExampleDatabase(WindowsPath('C:/Sem VI/software engineering/capstone project/project/copy2/time_pass/.hypothesis/examples'))
+rootdir: C:\Sem VI\software engineering\capstone project\project\copy2\time_pass
+configfile: pytest.ini
+plugins: anyio-4.13.0, hypothesis-6.88.1
+collecting ... collected 55 items
+
+tests/test_setup.py::TestProjectSetup::test_app_creation PASSED          [  1%]
+tests/test_setup.py::TestProjectSetup::test_database_initialization PASSED [  3%]
+tests/test_setup.py::TestProjectSetup::test_authentication_ui_visibility_property PASSED [  5%]
+tests/test_setup.py::TestProjectSetup::test_login_page_accessibility PASSED [  7%]
+tests/test_setup.py::TestProjectSetup::test_config_loading PASSED        [  9%]
+tests/test_setup.py::TestProjectSetup::test_user_model_creation PASSED   [ 10%]
+tests/test_setup.py::TestProjectSetup::test_campus_model_creation PASSED [ 12%]
+tests/test_auth.py::TestOAuthIntegration::test_login_page_displays_oauth_options PASSED [ 14%]
+tests/test_auth.py::TestOAuthIntegration::test_signup_page_displays_oauth_options PASSED [ 16%]
+tests/test_auth.py::TestOAuthIntegration::test_oauth_integration_consistency_property PASSED [ 18%]
+tests/test_auth.py::TestOAuthIntegration::test_oauth_callback_handling PASSED [ 20%]
+tests/test_auth.py::TestOAuthIntegration::test_authenticated_user_state_property FAILED [ 21%]
+
+================================== FAILURES ===================================
+_________ TestOAuthIntegration.test_authenticated_user_state_property _________
+
+self = <sqlalchemy.engine.base.Connection object at 0x000001E2A4F196D0>
+dialect = <sqlalchemy.dialects.sqlite.pysqlite.SQLiteDialect_pysqlite object at 0x000001E2A4FAF820>
+context = <sqlalchemy.dialects.sqlite.base.SQLiteExecutionContext object at 0x000001E2A66949F0>
+statement = <sqlalchemy.dialects.sqlite.base.SQLiteCompiler object at 0x000001E2A664C190>
+parameters = [('d3faae97-ea45-46d6-b121-70365eccbf58', 'google_5ca32b86-3f98-45a8-af46-7d139fd7e9ed', '1@A.com', '0', None, 0, ...)]
+
+    def _exec_single_context(
+        self,
+        dialect: Dialect,
+        context: ExecutionContext,
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+    ) -> CursorResult[Any]:
+        """continue the _execute_context() method for a single DBAPI
+        cursor.execute() or cursor.executemany() call.
+    
+        """
+        if dialect.bind_typing is BindTyping.SETINPUTSIZES:
+            generic_setinputsizes = context._prepare_set_input_sizes()
+    
+            if generic_setinputsizes:
+                try:
+                    dialect.do_set_input_sizes(
+                        context.cursor, generic_setinputsizes, context
+                    )
+                except BaseException as e:
+                    self._handle_dbapi_exception(
+                        e, str(statement), parameters, None, context
+                    )
+    
+        cursor, str_statement, parameters = (
+            context.cursor,
+            context.statement,
+            context.parameters,
+        )
+    
+        effective_parameters: Optional[_AnyExecuteParams]
+    
+        if not context.executemany:
+            effective_parameters = parameters[0]
+        else:
+            effective_parameters = parameters
+    
+        if self._has_events or self.engine._has_events:
+            for fn in self.dispatch.before_cursor_execute:
+                str_statement, effective_parameters = fn(
+                    self,
+                    cursor,
+                    str_statement,
+                    effective_parameters,
+                    context,
+                    context.executemany,
+                )
+    
+        if self._echo:
+            self._log_info(str_statement)
+    
+            stats = context._get_cache_stats()
+    
+            if not self.engine.hide_parameters:
+                self._log_info(
+                    "[%s] %r",
+                    stats,
+                    sql_util._repr_params(
+                        effective_parameters,
+                        batches=10,
+                        ismulti=context.executemany,
+                    ),
+                )
+            else:
+                self._log_info(
+                    "[%s] [SQL parameters hidden due to hide_parameters=True]",
+                    stats,
+                )
+    
+        evt_handled: bool = False
+        try:
+            if context.execute_style is ExecuteStyle.EXECUTEMANY:
+                effective_parameters = cast(
+                    "_CoreMultiExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_executemany:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_executemany(
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+                    )
+            elif not effective_parameters and context.no_parameters:
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute_no_params:
+                        if fn(cursor, str_statement, context):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_execute_no_params(
+                        cursor, str_statement, context
+                    )
+            else:
+                effective_parameters = cast(
+                    "_CoreSingleExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+>                   self.dialect.do_execute(
+                        cursor, str_statement, effective_parameters, context
+                    )
+
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1967: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <sqlalchemy.dialects.sqlite.pysqlite.SQLiteDialect_pysqlite object at 0x000001E2A4FAF820>
+cursor = <sqlite3.Cursor object at 0x000001E2A536F440>
+statement = 'INSERT INTO users (id, google_id, email, name, profile_picture, is_admin, is_manager, preferred_campus, theme_preference, created_at, last_login) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+parameters = ('d3faae97-ea45-46d6-b121-70365eccbf58', 'google_5ca32b86-3f98-45a8-af46-7d139fd7e9ed', '1@A.com', '0', None, 0, ...)
+context = <sqlalchemy.dialects.sqlite.base.SQLiteExecutionContext object at 0x000001E2A66949F0>
+
+    def do_execute(self, cursor, statement, parameters, context=None):
+>       cursor.execute(statement, parameters)
+E       sqlite3.IntegrityError: UNIQUE constraint failed: users.email
+
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\default.py:952: IntegrityError
+
+The above exception was the direct cause of the following exception:
+
+self = <tests.test_auth.TestOAuthIntegration object at 0x000001E2A4C468D0>
+client = <FlaskClient <Flask 'app'>>, app = <Flask 'app'>
+
+    @given(st.text(min_size=1, max_size=100), st.emails())
+>   @settings(suppress_health_check=[HealthCheck.function_scoped_fixture])
+
+tests\test_auth.py:106: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_auth.py:125: in test_authenticated_user_state_property
+    db.session.commit()
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\orm\scoping.py:597: in commit
+    return self._proxied.commit()
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\orm\session.py:2030: in commit
+    trans.commit(_to_root=True)
+<string>:2: in commit
+    ???
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\orm\state_changes.py:137: in _go
+    ret_value = fn(self, *arg, **kw)
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\orm\session.py:1311: in commit
+    self._prepare_impl()
+<string>:2: in _prepare_impl
+    ???
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\orm\state_changes.py:137: in _go
+    ret_value = fn(self, *arg, **kw)
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\orm\session.py:1286: in _prepare_impl
+    self.session.flush()
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\orm\session.py:4331: in flush
+    self._flush(objects)
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\orm\session.py:4466: in _flush
+    with util.safe_reraise():
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\util\langhelpers.py:121: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\orm\session.py:4427: in _flush
+    flush_context.execute()
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\orm\unitofwork.py:466: in execute
+    rec.execute(self)
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\orm\unitofwork.py:642: in execute
+    util.preloaded.orm_persistence.save_obj(
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\orm\persistence.py:93: in save_obj
+    _emit_insert_statements(
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\orm\persistence.py:1048: in _emit_insert_statements
+    result = connection.execute(
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1419: in execute
+    return meth(
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\sql\elements.py:527: in _execute_on_connection
+    return connection._execute_clauseelement(
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1641: in _execute_clauseelement
+    ret = self._execute_context(
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1846: in _execute_context
+    return self._exec_single_context(
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1986: in _exec_single_context
+    self._handle_dbapi_exception(
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:2363: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1967: in _exec_single_context
+    self.dialect.do_execute(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <sqlalchemy.dialects.sqlite.pysqlite.SQLiteDialect_pysqlite object at 0x000001E2A4FAF820>
+cursor = <sqlite3.Cursor object at 0x000001E2A536F440>
+statement = 'INSERT INTO users (id, google_id, email, name, profile_picture, is_admin, is_manager, preferred_campus, theme_preference, created_at, last_login) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+parameters = ('d3faae97-ea45-46d6-b121-70365eccbf58', 'google_5ca32b86-3f98-45a8-af46-7d139fd7e9ed', '1@A.com', '0', None, 0, ...)
+context = <sqlalchemy.dialects.sqlite.base.SQLiteExecutionContext object at 0x000001E2A66949F0>
+
+    def do_execute(self, cursor, statement, parameters, context=None):
+>       cursor.execute(statement, parameters)
+E       sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: users.email
+E       [SQL: INSERT INTO users (id, google_id, email, name, profile_picture, is_admin, is_manager, preferred_campus, theme_preference, created_at, last_login) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)]
+E       [parameters: ('d3faae97-ea45-46d6-b121-70365eccbf58', 'google_5ca32b86-3f98-45a8-af46-7d139fd7e9ed', '1@A.com', '0', None, 0, 0, 'amrita-chennai', 'light', '2026-03-27 11:25:54.156168', None)]
+E       (Background on this error at: https://sqlalche.me/e/20/gkpj)
+E       Falsifying example: test_authenticated_user_state_property(
+E           self=<tests.test_auth.TestOAuthIntegration object at 0x000001E2A4C468D0>,
+E           client=<FlaskClient <Flask 'app'>>,
+E           app=<Flask 'app'>,
+E           name='0',
+E           email='1@A.com',
+E       )
+E       Explanation:
+E           These lines were always and only run by failing examples:
+E               C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\dialects\sqlite\pysqlite.py:633
+E               C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:1985
+E               C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:2259
+E               C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:2289
+E               C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\base.py:2359
+E               (and 15 more with settings.verbosity >= verbose)
+
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\engine\default.py:952: IntegrityError
+============================== warnings summary ===============================
+tests/test_auth.py::TestOAuthIntegration::test_oauth_callback_handling
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\app\auth\routes.py:91: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    user.last_login = datetime.utcnow()
+
+tests/test_auth.py: 20 warnings
+  C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\sql\schema.py:3624: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    return util.wrap_callable(lambda ctx: fn(), fn)  # type: ignore
+
+tests/test_auth.py::TestOAuthIntegration::test_oauth_callback_handling
+  C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\flask_login\login_manager.py:488: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    expires = datetime.utcnow() + duration
+
+tests/test_auth.py: 15 warnings
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\app\auth\routes.py:18: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    return User.query.get(user_id)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_auth.py::TestOAuthIntegration::test_authenticated_user_state_property
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+================== 1 failed, 11 passed, 37 warnings in 4.59s ==================

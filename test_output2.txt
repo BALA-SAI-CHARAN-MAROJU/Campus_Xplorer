@@ -1,0 +1,798 @@
+﻿FF....FFFF....................F.F.F.F.....................EEEEEEE....... [ 49%]
+F.................................F....FF.FF..FF..FFFFF................. [ 98%]
+..                                                                       [100%]
+=================================== ERRORS ====================================
+____________ ERROR at setup of TestRequireAdmin.test_admin_allowed ____________
+tests\test_decorators.py:37: in register_routes
+    _register_test_routes(app)
+tests\test_decorators.py:17: in _register_test_routes
+    @app.route('/test/admin-only')
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\flask\scaffold.py:49: in wrapper_func
+    self._check_setup_finished(f_name)
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\flask\app.py:511: in _check_setup_finished
+    raise AssertionError(
+E   AssertionError: The setup method 'route' can no longer be called on the application. It has already handled its first request, any changes will not be applied consistently.
+E   Make sure all imports, decorators, functions, etc. needed to set up the application are done before running it.
+___________ ERROR at setup of TestRequireAdmin.test_manager_blocked ___________
+tests\test_decorators.py:37: in register_routes
+    _register_test_routes(app)
+tests\test_decorators.py:17: in _register_test_routes
+    @app.route('/test/admin-only')
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\flask\scaffold.py:49: in wrapper_func
+    self._check_setup_finished(f_name)
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\flask\app.py:511: in _check_setup_finished
+    raise AssertionError(
+E   AssertionError: The setup method 'route' can no longer be called on the application. It has already handled its first request, any changes will not be applied consistently.
+E   Make sure all imports, decorators, functions, etc. needed to set up the application are done before running it.
+____________ ERROR at setup of TestRequireAdmin.test_user_blocked _____________
+tests\test_decorators.py:37: in register_routes
+    _register_test_routes(app)
+tests\test_decorators.py:17: in _register_test_routes
+    @app.route('/test/admin-only')
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\flask\scaffold.py:49: in wrapper_func
+    self._check_setup_finished(f_name)
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\flask\app.py:511: in _check_setup_finished
+    raise AssertionError(
+E   AssertionError: The setup method 'route' can no longer be called on the application. It has already handled its first request, any changes will not be applied consistently.
+E   Make sure all imports, decorators, functions, etc. needed to set up the application are done before running it.
+_______ ERROR at setup of TestRequireManagerOrAdmin.test_admin_allowed ________
+tests\test_decorators.py:37: in register_routes
+    _register_test_routes(app)
+tests\test_decorators.py:17: in _register_test_routes
+    @app.route('/test/admin-only')
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\flask\scaffold.py:49: in wrapper_func
+    self._check_setup_finished(f_name)
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\flask\app.py:511: in _check_setup_finished
+    raise AssertionError(
+E   AssertionError: The setup method 'route' can no longer be called on the application. It has already handled its first request, any changes will not be applied consistently.
+E   Make sure all imports, decorators, functions, etc. needed to set up the application are done before running it.
+______ ERROR at setup of TestRequireManagerOrAdmin.test_manager_allowed _______
+tests\test_decorators.py:37: in register_routes
+    _register_test_routes(app)
+tests\test_decorators.py:17: in _register_test_routes
+    @app.route('/test/admin-only')
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\flask\scaffold.py:49: in wrapper_func
+    self._check_setup_finished(f_name)
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\flask\app.py:511: in _check_setup_finished
+    raise AssertionError(
+E   AssertionError: The setup method 'route' can no longer be called on the application. It has already handled its first request, any changes will not be applied consistently.
+E   Make sure all imports, decorators, functions, etc. needed to set up the application are done before running it.
+________ ERROR at setup of TestRequireManagerOrAdmin.test_user_blocked ________
+tests\test_decorators.py:37: in register_routes
+    _register_test_routes(app)
+tests\test_decorators.py:17: in _register_test_routes
+    @app.route('/test/admin-only')
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\flask\scaffold.py:49: in wrapper_func
+    self._check_setup_finished(f_name)
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\flask\app.py:511: in _check_setup_finished
+    raise AssertionError(
+E   AssertionError: The setup method 'route' can no longer be called on the application. It has already handled its first request, any changes will not be applied consistently.
+E   Make sure all imports, decorators, functions, etc. needed to set up the application are done before running it.
+_ ERROR at setup of TestRequireAuthenticated.test_unauthenticated_redirects_to_login _
+tests\test_decorators.py:37: in register_routes
+    _register_test_routes(app)
+tests\test_decorators.py:17: in _register_test_routes
+    @app.route('/test/admin-only')
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\flask\scaffold.py:49: in wrapper_func
+    self._check_setup_finished(f_name)
+C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\flask\app.py:511: in _check_setup_finished
+    raise AssertionError(
+E   AssertionError: The setup method 'route' can no longer be called on the application. It has already handled its first request, any changes will not be applied consistently.
+E   Make sure all imports, decorators, functions, etc. needed to set up the application are done before running it.
+================================== FAILURES ===================================
+_____________________ test_admin_access_control_property ______________________
+tests\test_admin.py:349: in test_admin_access_control_property
+    @given(st.data())
+tests\test_admin.py:357: in test_admin_access_control_property
+    machine.execute(data)
+E   AttributeError: 'AdminAccessControlMachine' object has no attribute 'execute'
+E   Falsifying example: test_admin_access_control_property(
+E       data=data(...),
+E   )
+_________________ test_event_management_consistency_property __________________
+tests\test_admin.py:363: in test_event_management_consistency_property
+    @given(st.data())
+tests\test_admin.py:371: in test_event_management_consistency_property
+    machine.execute(data)
+E   AttributeError: 'EventManagementMachine' object has no attribute 'execute'
+E   Falsifying example: test_event_management_consistency_property(
+E       data=data(...),
+E   )
+__________________ test_ai_interface_initialization_property __________________
+tests\test_ai_assistant.py:403: in test_ai_interface_initialization_property
+    @given(st.data())
+tests\test_ai_assistant.py:411: in test_ai_interface_initialization_property
+    machine.execute(data)
+E   AttributeError: 'AIInterfaceMachine' object has no attribute 'execute'
+E   Falsifying example: test_ai_interface_initialization_property(
+E       data=data(...),
+E   )
+____________________ test_contextual_ai_responses_property ____________________
+tests\test_ai_assistant.py:417: in test_contextual_ai_responses_property
+    @given(st.data())
+tests\test_ai_assistant.py:425: in test_contextual_ai_responses_property
+    machine.execute(data)
+E   AttributeError: 'AIResponseMachine' object has no attribute 'execute'
+E   Falsifying example: test_contextual_ai_responses_property(
+E       data=data(...),
+E   )
+_____________________ test_ai_fallback_behavior_property ______________________
+tests\test_ai_assistant.py:431: in test_ai_fallback_behavior_property
+    @given(st.data())
+tests\test_ai_assistant.py:439: in test_ai_fallback_behavior_property
+    machine.execute(data)
+E   AttributeError: 'AIFallbackMachine' object has no attribute 'execute'
+E   Falsifying example: test_ai_fallback_behavior_property(
+E       data=data(...),
+E   )
+_________________ test_query_processor_intent_classification __________________
+tests\test_ai_assistant.py:456: in test_query_processor_intent_classification
+    assert processor.classify_intent("how do I get to the library") == "navigation"
+E   AssertionError: assert 'facilities' == 'navigation'
+E     - navigation
+E     + facilities
+______ TestOAuthIntegration.test_oauth_integration_consistency_property _______
+E   hypothesis.errors.FailedHealthCheck: Function-scoped fixture 'client' used by 'tests/test_auth.py::TestOAuthIntegration::test_oauth_integration_consistency_property'
+    
+    Function-scoped fixtures are not reset between examples generated by
+    `@given(...)`, which is often surprising and can cause subtle test bugs.
+    
+    If you were expecting the fixture to run separately for each generated example,
+    then unfortunately you will need to find a different way to achieve your goal
+    (e.g. using a similar context manager instead of a fixture).
+    
+    If you are confident that your test will work correctly even though the
+    fixture is not reset between generated examples, you can suppress this health
+    check to assure Hypothesis that you understand what you are doing.
+    
+    See https://hypothesis.readthedocs.io/en/latest/healthchecks.html for more information about this. If you want to disable just this health check, add HealthCheck.function_scoped_fixture to the suppress_health_check settings for this test.
+All traceback entries are hidden. Pass `--full-trace` to see hidden and internal frames.
+_________ TestOAuthIntegration.test_authenticated_user_state_property _________
+E   hypothesis.errors.FailedHealthCheck: Function-scoped fixture 'client' used by 'tests/test_auth.py::TestOAuthIntegration::test_authenticated_user_state_property'
+    
+    Function-scoped fixtures are not reset between examples generated by
+    `@given(...)`, which is often surprising and can cause subtle test bugs.
+    
+    If you were expecting the fixture to run separately for each generated example,
+    then unfortunately you will need to find a different way to achieve your goal
+    (e.g. using a similar context manager instead of a fixture).
+    
+    If you are confident that your test will work correctly even though the
+    fixture is not reset between generated examples, you can suppress this health
+    check to assure Hypothesis that you understand what you are doing.
+    
+    See https://hypothesis.readthedocs.io/en/latest/healthchecks.html for more information about this. If you want to disable just this health check, add HealthCheck.function_scoped_fixture to the suppress_health_check settings for this test.
+All traceback entries are hidden. Pass `--full-trace` to see hidden and internal frames.
+___________ TestOAuthIntegration.test_profile_update_functionality ____________
+E   hypothesis.errors.FailedHealthCheck: Function-scoped fixture 'client' used by 'tests/test_auth.py::TestOAuthIntegration::test_profile_update_functionality'
+    
+    Function-scoped fixtures are not reset between examples generated by
+    `@given(...)`, which is often surprising and can cause subtle test bugs.
+    
+    If you were expecting the fixture to run separately for each generated example,
+    then unfortunately you will need to find a different way to achieve your goal
+    (e.g. using a similar context manager instead of a fixture).
+    
+    If you are confident that your test will work correctly even though the
+    fixture is not reset between generated examples, you can suppress this health
+    check to assure Hypothesis that you understand what you are doing.
+    
+    See https://hypothesis.readthedocs.io/en/latest/healthchecks.html for more information about this. If you want to disable just this health check, add HealthCheck.function_scoped_fixture to the suppress_health_check settings for this test.
+All traceback entries are hidden. Pass `--full-trace` to see hidden and internal frames.
+_______________ TestOAuthIntegration.test_user_model_validation _______________
+E   hypothesis.errors.FailedHealthCheck: Function-scoped fixture 'app' used by 'tests/test_auth.py::TestOAuthIntegration::test_user_model_validation'
+    
+    Function-scoped fixtures are not reset between examples generated by
+    `@given(...)`, which is often surprising and can cause subtle test bugs.
+    
+    If you were expecting the fixture to run separately for each generated example,
+    then unfortunately you will need to find a different way to achieve your goal
+    (e.g. using a similar context manager instead of a fixture).
+    
+    If you are confident that your test will work correctly even though the
+    fixture is not reset between generated examples, you can suppress this health
+    check to assure Hypothesis that you understand what you are doing.
+    
+    See https://hypothesis.readthedocs.io/en/latest/healthchecks.html for more information about this. If you want to disable just this health check, add HealthCheck.function_scoped_fixture to the suppress_health_check settings for this test.
+All traceback entries are hidden. Pass `--full-trace` to see hidden and internal frames.
+________________ TestMapErrorHandling.test_service_resilience _________________
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Python314\Lib\unittest\case.py", line 58, in testPartExecutor
+  |     yield
+  |   File "C:\Python314\Lib\unittest\case.py", line 669, in run
+  |     self._callTestMethod(testMethod)
+  |     ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  |   File "C:\Python314\Lib\unittest\case.py", line 615, in _callTestMethod
+  |     result = method()
+  |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_enhanced_mapping.py", line 563, in test_service_resilience
+  |     service_responses=st.lists(
+  |            ^^^^^^^
+  |   File "C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\hypothesis\core.py", line 1471, in wrapped_test
+  |     raise the_error_hypothesis_found
+  | ExceptionGroup: Hypothesis found 3 distinct failures. (3 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_enhanced_mapping.py", line 629, in test_service_resilience
+    |     health_result = evaluate_service_health(service_responses)
+    |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_enhanced_mapping.py", line 610, in evaluate_service_health
+    |     if response_time > 5.0:
+    |        ^^^^^^^^^^^^^^^^^^^
+    | TypeError: '>' not supported between instances of 'str' and 'float'
+    | Falsifying example: test_service_resilience(
+    |     self=<tests.test_enhanced_mapping.TestMapErrorHandling testMethod=test_service_resilience>,
+    |     service_responses=[{'status_code': 200,
+    |       'error_type': 'timeout',
+    |       'response_time': 'timeout'}],
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_enhanced_mapping.py", line 629, in test_service_resilience
+    |     health_result = evaluate_service_health(service_responses)
+    |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_enhanced_mapping.py", line 598, in evaluate_service_health
+    |     if 200 <= status_code < 300:
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^
+    | TypeError: '<=' not supported between instances of 'int' and 'str'
+    | Falsifying example: test_service_resilience(
+    |     self=<tests.test_enhanced_mapping.TestMapErrorHandling testMethod=test_service_resilience>,
+    |     service_responses=[{'status_code': 'timeout'}],
+    | )
+    +---------------- 3 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_enhanced_mapping.py", line 642, in test_service_resilience
+    |     self.assertGreaterEqual(health_result['health_score'], 0)
+    |     ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Python314\Lib\unittest\case.py", line 1315, in assertGreaterEqual
+    |     self.fail(self._formatMessage(msg, standardMsg))
+    |     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Python314\Lib\unittest\case.py", line 750, in fail
+    |     raise self.failureException(msg)
+    | AssertionError: -2.0 not greater than or equal to 0
+    | Falsifying example: test_service_resilience(
+    |     self=<tests.test_enhanced_mapping.TestMapErrorHandling testMethod=test_service_resilience>,
+    |     service_responses=[{}],
+    | )
+    | Explanation:
+    |     These lines were always and only run by failing examples:
+    |         C:\Python314\Lib\unittest\case.py:1314
+    |         C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_enhanced_mapping.py:602
+    +------------------------------------
+_______________ TestDataSecurity.test_sensitive_data_encryption _______________
+tests\test_security.py:27: in test_sensitive_data_encryption
+    user_data=st.fixed_dictionaries({
+tests\test_security.py:114: in test_sensitive_data_encryption
+    self.assertTrue(validation['integrity_maintained'])
+E   AssertionError: False is not true
+E   Falsifying example: test_sensitive_data_encryption(
+E       self=<tests.test_security.TestDataSecurity testMethod=test_sensitive_data_encryption>,
+E       user_data={'email': '0@A.ac',
+E        'name': '000',
+E        'google_id': '0000000000',
+E        'profile_data': {'0': '0'}},
+E   )
+E   Explanation:
+E       These lines were always and only run by failing examples:
+E           C:\Python314\Lib\unittest\case.py:761
+E           C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_security.py:104
+_________ TestSecureErrorHandling.test_error_information_sanitization _________
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Python314\Lib\unittest\case.py", line 58, in testPartExecutor
+  |     yield
+  |   File "C:\Python314\Lib\unittest\case.py", line 669, in run
+  |     self._callTestMethod(testMethod)
+  |     ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  |   File "C:\Python314\Lib\unittest\case.py", line 615, in _callTestMethod
+  |     result = method()
+  |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_security.py", line 686, in test_error_information_sanitization
+  |     error_scenarios=st.lists(
+  |            ^^^^^^^
+  |   File "C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\hypothesis\core.py", line 1471, in wrapped_test
+  |     raise the_error_hypothesis_found
+  | ExceptionGroup: Hypothesis found 3 distinct failures. (3 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_security.py", line 780, in test_error_information_sanitization
+    |     sanitized = sanitize_error_response(scenario)
+    |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_security.py", line 768, in sanitize_error_response
+    |     if pattern.lower() in stack_trace.lower():
+    |                           ^^^^^^^^^^^^^^^^^
+    | AttributeError: 'dict' object has no attribute 'lower'
+    | Falsifying example: test_error_information_sanitization(
+    |     self=<tests.test_security.TestSecureErrorHandling testMethod=test_error_information_sanitization>,
+    |     error_scenarios=[{'stack_trace': {'password': '0000000000'}}],
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_security.py", line 780, in test_error_information_sanitization
+    |     sanitized = sanitize_error_response(scenario)
+    |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_security.py", line 757, in sanitize_error_response
+    |     for key, value in sensitive_data.items():
+    |                       ^^^^^^^^^^^^^^^^^^^^
+    | AttributeError: 'str' object has no attribute 'items'
+    | Falsifying example: test_error_information_sanitization(
+    |     self=<tests.test_security.TestSecureErrorHandling testMethod=test_error_information_sanitization>,
+    |     error_scenarios=[{'sensitive_data': 'database_error'}],
+    | )
+    +---------------- 3 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_security.py", line 780, in test_error_information_sanitization
+    |     sanitized = sanitize_error_response(scenario)
+    |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_security.py", line 749, in sanitize_error_response
+    |     sanitized_response['user_message'] = user_messages.get(error_type, 'An error occurred.')
+    |                                          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    | TypeError: cannot use 'dict' as a dict key (unhashable type: 'dict')
+    | Falsifying example: test_error_information_sanitization(
+    |     self=<tests.test_security.TestSecureErrorHandling testMethod=test_error_information_sanitization>,
+    |     error_scenarios=[{'error_type': {}}],
+    | )
+    +------------------------------------
+____________ TestSecureErrorHandling.test_secure_logging_practices ____________
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Python314\Lib\unittest\case.py", line 58, in testPartExecutor
+  |     yield
+  |   File "C:\Python314\Lib\unittest\case.py", line 669, in run
+  |     self._callTestMethod(testMethod)
+  |     ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  |   File "C:\Python314\Lib\unittest\case.py", line 615, in _callTestMethod
+  |     result = method()
+  |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_security.py", line 807, in test_secure_logging_practices
+  |     logging_scenarios=st.lists(
+  |            ^^^^^^^
+  |   File "C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\hypothesis\core.py", line 1471, in wrapped_test
+  |     raise the_error_hypothesis_found
+  | ExceptionGroup: Hypothesis found 4 distinct failures. (4 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_security.py", line 906, in test_secure_logging_practices
+    |     log_entry = implement_secure_logging(scenario)
+    |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_security.py", line 893, in implement_secure_logging
+    |     for key, value in system_info.items():
+    |                       ^^^^^^^^^^^^^^^^^
+    | AttributeError: 'str' object has no attribute 'items'
+    | Falsifying example: test_secure_logging_practices(
+    |     self=<tests.test_security.TestSecureErrorHandling testMethod=test_secure_logging_practices>,
+    |     logging_scenarios=[{'system_info': 'DEBUG'}],
+    | )
+    | Explanation:
+    |     These lines were always and only run by failing examples:
+    |         C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_security.py:891
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_security.py", line 906, in test_secure_logging_practices
+    |     log_entry = implement_secure_logging(scenario)
+    |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_security.py", line 876, in implement_secure_logging
+    |     for key, value in user_data.items():
+    |                       ^^^^^^^^^^^^^^^
+    | AttributeError: 'str' object has no attribute 'items'
+    | Falsifying example: test_secure_logging_practices(
+    |     self=<tests.test_security.TestSecureErrorHandling testMethod=test_secure_logging_practices>,
+    |     logging_scenarios=[{'user_data': 'DEBUG'}],
+    | )
+    | Explanation:
+    |     These lines were always and only run by failing examples:
+    |         C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_security.py:874
+    +---------------- 3 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_security.py", line 916, in test_secure_logging_practices
+    |     self.assertIsInstance(log_entry['message'], str)
+    |     ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Python314\Lib\unittest\case.py", line 1337, in assertIsInstance
+    |     self.fail(self._formatMessage(msg, standardMsg))
+    |     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Python314\Lib\unittest\case.py", line 750, in fail
+    |     raise self.failureException(msg)
+    | AssertionError: {} is not an instance of <class 'str'>
+    | Falsifying example: test_secure_logging_practices(
+    |     self=<tests.test_security.TestSecureErrorHandling testMethod=test_secure_logging_practices>,
+    |     logging_scenarios=[{'message_content': {}}],
+    | )
+    | Explanation:
+    |     These lines were always and only run by failing examples:
+    |         C:\Python314\Lib\unittest\case.py:1333
+    +---------------- 4 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_security.py", line 906, in test_secure_logging_practices
+    |     log_entry = implement_secure_logging(scenario)
+    |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_security.py", line 859, in implement_secure_logging
+    |     permissions = logging_permissions.get(log_level, logging_permissions['INFO'])
+    | TypeError: cannot use 'dict' as a dict key (unhashable type: 'dict')
+    | Falsifying example: test_secure_logging_practices(
+    |     self=<tests.test_security.TestSecureErrorHandling testMethod=test_secure_logging_practices>,
+    |     logging_scenarios=[{'log_level': {}}],
+    | )
+    +------------------------------------
+________________ TestProjectSetup.test_database_initialization ________________
+tests\test_setup.py:60: in test_database_initialization
+    assert db.engine.has_table('users')
+E   AttributeError: 'Engine' object has no attribute 'has_table'
+_________ TestProjectSetup.test_authentication_ui_visibility_property _________
+E   hypothesis.errors.FailedHealthCheck: Function-scoped fixture 'client' used by 'tests/test_setup.py::TestProjectSetup::test_authentication_ui_visibility_property'
+    
+    Function-scoped fixtures are not reset between examples generated by
+    `@given(...)`, which is often surprising and can cause subtle test bugs.
+    
+    If you were expecting the fixture to run separately for each generated example,
+    then unfortunately you will need to find a different way to achieve your goal
+    (e.g. using a similar context manager instead of a fixture).
+    
+    If you are confident that your test will work correctly even though the
+    fixture is not reset between generated examples, you can suppress this health
+    check to assure Hypothesis that you understand what you are doing.
+    
+    See https://hypothesis.readthedocs.io/en/latest/healthchecks.html for more information about this. If you want to disable just this health check, add HealthCheck.function_scoped_fixture to the suppress_health_check settings for this test.
+All traceback entries are hidden. Pass `--full-trace` to see hidden and internal frames.
+__________________ TestProjectSetup.test_user_model_creation __________________
+E   hypothesis.errors.FailedHealthCheck: Function-scoped fixture 'app' used by 'tests/test_setup.py::TestProjectSetup::test_user_model_creation'
+    
+    Function-scoped fixtures are not reset between examples generated by
+    `@given(...)`, which is often surprising and can cause subtle test bugs.
+    
+    If you were expecting the fixture to run separately for each generated example,
+    then unfortunately you will need to find a different way to achieve your goal
+    (e.g. using a similar context manager instead of a fixture).
+    
+    If you are confident that your test will work correctly even though the
+    fixture is not reset between generated examples, you can suppress this health
+    check to assure Hypothesis that you understand what you are doing.
+    
+    See https://hypothesis.readthedocs.io/en/latest/healthchecks.html for more information about this. If you want to disable just this health check, add HealthCheck.function_scoped_fixture to the suppress_health_check settings for this test.
+All traceback entries are hidden. Pass `--full-trace` to see hidden and internal frames.
+_________________ TestProjectSetup.test_campus_model_creation _________________
+E   hypothesis.errors.FailedHealthCheck: Function-scoped fixture 'app' used by 'tests/test_setup.py::TestProjectSetup::test_campus_model_creation'
+    
+    Function-scoped fixtures are not reset between examples generated by
+    `@given(...)`, which is often surprising and can cause subtle test bugs.
+    
+    If you were expecting the fixture to run separately for each generated example,
+    then unfortunately you will need to find a different way to achieve your goal
+    (e.g. using a similar context manager instead of a fixture).
+    
+    If you are confident that your test will work correctly even though the
+    fixture is not reset between generated examples, you can suppress this health
+    check to assure Hypothesis that you understand what you are doing.
+    
+    See https://hypothesis.readthedocs.io/en/latest/healthchecks.html for more information about this. If you want to disable just this health check, add HealthCheck.function_scoped_fixture to the suppress_health_check settings for this test.
+All traceback entries are hidden. Pass `--full-trace` to see hidden and internal frames.
+_____________ TestInteractiveFeedback.test_loading_state_feedback _____________
+tests\test_ui_ux_enhancements.py:186: in test_loading_state_feedback
+    loading_scenarios=st.lists(
+tests\test_ui_ux_enhancements.py:245: in test_loading_state_feedback
+    feedback = simulate_loading_state(scenario)
+tests\test_ui_ux_enhancements.py:238: in simulate_loading_state
+    if duration > 0:
+E   TypeError: '>' not supported between instances of 'str' and 'int'
+E   Falsifying example: test_loading_state_feedback(
+E       self=<tests.test_ui_ux_enhancements.TestInteractiveFeedback testMethod=test_loading_state_feedback>,
+E       loading_scenarios=[{'duration': 'spinner'}],
+E   )
+______________ TestResponsiveDesign.test_content_reflow_behavior ______________
+tests\test_ui_ux_enhancements.py:372: in test_content_reflow_behavior
+    content_types=st.lists(
+tests\test_ui_ux_enhancements.py:441: in test_content_reflow_behavior
+    behavior = analyze_content_reflow(content)
+tests\test_ui_ux_enhancements.py:411: in analyze_content_reflow
+    if length > 500:
+E   TypeError: '>' not supported between instances of 'str' and 'int'
+E   Falsifying example: test_content_reflow_behavior(
+E       self=<tests.test_ui_ux_enhancements.TestResponsiveDesign testMethod=test_content_reflow_behavior>,
+E       content_types=[{'length': 'text'}],
+E   )
+___________ TestResponsiveDesign.test_responsive_layout_adaptation ____________
+tests\test_ui_ux_enhancements.py:269: in test_responsive_layout_adaptation
+    viewport_sizes=st.lists(
+tests\test_ui_ux_enhancements.py:344: in test_responsive_layout_adaptation
+    analysis = analyze_responsive_layout(viewport)
+tests\test_ui_ux_enhancements.py:306: in analyze_responsive_layout
+    if width <= 480:
+E   TypeError: '<=' not supported between instances of 'str' and 'int'
+E   Falsifying example: test_responsive_layout_adaptation(
+E       self=<tests.test_ui_ux_enhancements.TestResponsiveDesign testMethod=test_responsive_layout_adaptation>,
+E       viewport_sizes=[{'width': 'mobile'}],
+E   )
+______ TestLoadingStateIndicators.test_loading_indicator_appropriateness ______
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Python314\Lib\unittest\case.py", line 58, in testPartExecutor
+  |     yield
+  |   File "C:\Python314\Lib\unittest\case.py", line 669, in run
+  |     self._callTestMethod(testMethod)
+  |     ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  |   File "C:\Python314\Lib\unittest\case.py", line 615, in _callTestMethod
+  |     result = method()
+  |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_ui_ux_enhancements.py", line 470, in test_loading_indicator_appropriateness
+  |     loading_operations=st.lists(
+  |            ^^^^^^^
+  |   File "C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\hypothesis\core.py", line 1471, in wrapped_test
+  |     raise the_error_hypothesis_found
+  | ExceptionGroup: Hypothesis found 3 distinct failures. (3 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_ui_ux_enhancements.py", line 555, in test_loading_indicator_appropriateness
+    |     config = determine_loading_indicator(operation)
+    |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_ui_ux_enhancements.py", line 539, in determine_loading_indicator
+    |     if duration > 2.0:
+    |        ^^^^^^^^^^^^^^
+    | TypeError: '>' not supported between instances of 'str' and 'float'
+    | Falsifying example: test_loading_indicator_appropriateness(
+    |     self=<tests.test_ui_ux_enhancements.TestLoadingStateIndicators testMethod=test_loading_indicator_appropriateness>,
+    |     loading_operations=[{'operation_type': 'search', 'duration': 'api_call'}],
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_ui_ux_enhancements.py", line 555, in test_loading_indicator_appropriateness
+    |     config = determine_loading_indicator(operation)
+    |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_ui_ux_enhancements.py", line 534, in determine_loading_indicator
+    |     if duration > 5.0:
+    |        ^^^^^^^^^^^^^^
+    | TypeError: '>' not supported between instances of 'str' and 'float'
+    | Falsifying example: test_loading_indicator_appropriateness(
+    |     self=<tests.test_ui_ux_enhancements.TestLoadingStateIndicators testMethod=test_loading_indicator_appropriateness>,
+    |     loading_operations=[{'operation_type': 'page_load',
+    |       'duration': 'api_call'}],
+    | )
+    +---------------- 3 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_ui_ux_enhancements.py", line 555, in test_loading_indicator_appropriateness
+    |     config = determine_loading_indicator(operation)
+    |   File "C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_ui_ux_enhancements.py", line 512, in determine_loading_indicator
+    |     if duration > 3.0:
+    |        ^^^^^^^^^^^^^^
+    | TypeError: '>' not supported between instances of 'str' and 'float'
+    | Falsifying example: test_loading_indicator_appropriateness(
+    |     self=<tests.test_ui_ux_enhancements.TestLoadingStateIndicators testMethod=test_loading_indicator_appropriateness>,
+    |     loading_operations=[{'duration': 'api_call'}],
+    | )
+    +------------------------------------
+________ TestLoadingStateIndicators.test_progress_calculation_accuracy ________
+tests\test_ui_ux_enhancements.py:589: in test_progress_calculation_accuracy
+    progress_scenarios=st.lists(
+tests\test_ui_ux_enhancements.py:659: in test_progress_calculation_accuracy
+    self.assertIsInstance(metrics['remaining'], int)
+E   AssertionError: 99.0 is not an instance of <class 'int'>
+E   Falsifying example: test_progress_calculation_accuracy(
+E       self=<tests.test_ui_ux_enhancements.TestLoadingStateIndicators testMethod=test_progress_calculation_accuracy>,
+E       progress_scenarios=[{'current': 1.0}],
+E   )
+E   Explanation:
+E       These lines were always and only run by failing examples:
+E           C:\Python314\Lib\unittest\case.py:1333
+============================== warnings summary ===============================
+tests/test_admin.py::test_admin_dashboard_renders
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_admin.py:392: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    created_at=datetime.utcnow()
+
+tests/test_admin.py: 4 warnings
+tests/test_api_routes.py: 14 warnings
+tests/test_auth.py: 1 warning
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\app\auth\routes.py:18: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    return User.query.get(user_id)
+
+tests/test_admin.py::test_non_admin_dashboard_access_denied
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_admin.py:426: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    created_at=datetime.utcnow()
+
+tests/test_admin.py::test_admin_can_view_all_users
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_admin.py:460: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    created_at=datetime.utcnow()
+
+tests/test_admin.py::test_admin_can_view_all_users
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_admin.py:470: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    created_at=datetime.utcnow()
+
+tests/test_admin.py::test_admin_event_management
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_admin.py:510: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    created_at=datetime.utcnow()
+
+tests/test_admin.py::test_admin_event_management
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_admin.py:523: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    created_at=datetime.utcnow()
+
+tests/test_admin.py: 2 warnings
+tests/test_api_routes.py: 4 warnings
+tests/test_auth.py: 3 warnings
+tests/test_campus_selector.py: 2988 warnings
+tests/test_college_service.py: 63 warnings
+tests/test_enhanced_mapping.py: 208 warnings
+tests/test_event_service.py: 179 warnings
+tests/test_place_service.py: 210 warnings
+tests/test_security.py: 6 warnings
+tests/test_user_service.py: 10 warnings
+  C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\sqlalchemy\sql\schema.py:3624: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    return util.wrap_callable(lambda ctx: fn(), fn)  # type: ignore
+
+tests/test_ai_assistant.py::test_context_manager_data_retrieval
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_ai_assistant.py:491: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    created_at=datetime.utcnow()
+
+tests/test_ai_assistant.py::test_ai_assistant_conversation_storage
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_ai_assistant.py:544: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    created_at=datetime.utcnow()
+
+tests/test_ai_assistant.py::test_ai_assistant_conversation_storage
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\app\services\ai_assistant.py:99: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    created_at=datetime.utcnow(),
+
+tests/test_ai_assistant.py::test_ai_assistant_conversation_storage
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\app\services\ai_assistant.py:100: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    updated_at=datetime.utcnow()
+
+tests/test_ai_assistant.py::test_ai_assistant_conversation_storage
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\app\services\ai_assistant.py:112: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    'timestamp': datetime.utcnow().isoformat()
+
+tests/test_ai_assistant.py::test_ai_assistant_conversation_storage
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\app\services\ai_assistant.py:117: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    'timestamp': datetime.utcnow().isoformat()
+
+tests/test_ai_assistant.py::test_ai_assistant_conversation_storage
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\app\services\ai_assistant.py:121: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    conversation.updated_at = datetime.utcnow()
+
+tests/test_api_routes.py: 16 warnings
+tests/test_college_service.py: 2 warnings
+tests/test_event_service.py: 261 warnings
+tests/test_user_service.py: 217 warnings
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\conftest.py:51: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    created_at=datetime.utcnow(),
+
+tests/test_api_routes.py::TestEventEndpoints::test_delete_event_not_found_returns_404
+tests/test_event_service.py::TestDeleteEvent::test_happy_path
+tests/test_event_service.py::TestDeleteEvent::test_not_found
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\app\services\event_service.py:132: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    event = Event.query.get(event_id)
+
+tests/test_api_routes.py: 1 warning
+tests/test_college_service.py: 53 warnings
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\app\services\college_service.py:43: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    if Campus.query.get(data['id']):
+
+tests/test_auth.py::TestOAuthIntegration::test_oauth_callback_handling
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\app\auth\routes.py:91: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    user.last_login = datetime.utcnow()
+
+tests/test_auth.py::TestOAuthIntegration::test_oauth_callback_handling
+  C:\Users\balas\AppData\Roaming\Python\Python314\site-packages\flask_login\login_manager.py:488: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    expires = datetime.utcnow() + duration
+
+tests/test_campus_selector.py: 431 warnings
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_campus_selector.py:458: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    updated_user = User.query.get(self.test_user.id)
+
+tests/test_college_service.py::TestEditCollege::test_happy_path
+tests/test_college_service.py::TestEditCollege::test_not_found
+tests/test_college_service.py::TestEditCollege::test_invalid_coords
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\app\services\college_service.py:72: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    campus = Campus.query.get(college_id)
+
+tests/test_college_service.py::TestDeleteCollege::test_happy_path
+tests/test_college_service.py::TestDeleteCollege::test_not_found
+tests/test_college_service.py::TestDeleteCollege::test_blocked_by_active_events
+tests/test_college_service.py::test_college_with_active_events_not_deleted
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\app\services\college_service.py:108: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    campus = Campus.query.get(college_id)
+
+tests/test_college_service.py::TestDeleteCollege::test_happy_path
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_college_service.py:78: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    assert Campus.query.get('del-c') is None
+
+tests/test_college_service.py::TestDeleteCollege::test_blocked_by_active_events
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_college_service.py:92: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    assert Campus.query.get('block-c') is not None
+
+tests/test_college_service.py: 50 warnings
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_college_service.py:146: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    existing = Campus.query.get(campus_id)
+
+tests/test_college_service.py::test_college_with_active_events_not_deleted
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_college_service.py:169: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    assert Campus.query.get('prop11-c') is not None
+
+tests/test_event_service.py::TestUpdateEvent::test_happy_path
+tests/test_event_service.py::TestUpdateEvent::test_empty_body_returns_unchanged
+tests/test_event_service.py::TestUpdateEvent::test_not_found
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\app\services\event_service.py:80: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    event = Event.query.get(event_id)
+
+tests/test_event_service.py::TestUpdateEvent::test_happy_path
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\app\services\event_service.py:121: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    event.updated_at = datetime.utcnow()
+
+tests/test_event_service.py::TestDeleteEvent::test_happy_path
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_event_service.py:101: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    assert Event.query.get(eid) is None
+
+tests/test_place_service.py: 261 warnings
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\app\services\place_service.py:31: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    campus = Campus.query.get(college_id)
+
+tests/test_place_service.py::TestEditPlace::test_happy_path
+tests/test_place_service.py::TestEditPlace::test_place_not_found
+tests/test_place_service.py::TestEditPlace::test_name_conflict
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\app\services\place_service.py:67: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    campus = Campus.query.get(college_id)
+
+tests/test_place_service.py::TestDeletePlace::test_happy_path
+tests/test_place_service.py::TestDeletePlace::test_place_not_found
+tests/test_place_service.py::TestDeletePlace::test_college_not_found
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\app\services\place_service.py:108: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    campus = Campus.query.get(college_id)
+
+tests/test_place_service.py::TestDeletePlace::test_happy_path
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_place_service.py:84: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    campus_fresh = Campus.query.get('p-del')
+
+tests/test_place_service.py::TestGetPlaces::test_happy_path
+tests/test_place_service.py::TestGetPlaces::test_college_not_found
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\app\services\place_service.py:130: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    campus = Campus.query.get(college_id)
+
+tests/test_user_service.py::TestCreateUser::test_happy_path
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\app\services\user_service.py:35: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    created_at=datetime.utcnow(),
+
+tests/test_user_service.py::TestUpdateUser::test_happy_path
+tests/test_user_service.py::TestUpdateUser::test_not_found
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\app\services\user_service.py:51: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    user = User.query.get(user_id)
+
+tests/test_user_service.py::TestDeleteUser::test_happy_path
+tests/test_user_service.py::TestDeleteUser::test_not_found
+tests/test_user_service.py::TestDeleteUser::test_cascade_deletes_events_and_conversations
+tests/test_user_service.py::test_cascade_delete_property
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\app\services\user_service.py:79: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    user = User.query.get(user_id)
+
+tests/test_user_service.py::TestDeleteUser::test_happy_path
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_user_service.py:61: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    assert User.query.get(target.id) is None
+
+tests/test_user_service.py::TestDeleteUser::test_self_deletion_prevented
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_user_service.py:68: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    assert User.query.get(user.id) is not None
+
+tests/test_user_service.py::TestAssignRole::test_assign_admin
+tests/test_user_service.py::TestAssignRole::test_assign_manager
+tests/test_user_service.py::TestAssignRole::test_assign_user
+tests/test_user_service.py::TestAssignRole::test_not_found
+tests/test_user_service.py::test_role_mutual_exclusivity
+tests/test_user_service.py::test_role_mutual_exclusivity
+tests/test_user_service.py::test_role_mutual_exclusivity
+tests/test_user_service.py::test_role_mutual_exclusivity
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\app\services\user_service.py:104: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    user = User.query.get(user_id)
+
+tests/test_user_service.py: 50 warnings
+  C:\Sem VI\software engineering\capstone project\project\copy2\time_pass\tests\test_user_service.py:188: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+    assert User.query.get(user.id) is not None
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/test_admin.py::test_admin_access_control_property - AttributeErr...
+FAILED tests/test_admin.py::test_event_management_consistency_property - Attr...
+FAILED tests/test_ai_assistant.py::test_ai_interface_initialization_property
+FAILED tests/test_ai_assistant.py::test_contextual_ai_responses_property - At...
+FAILED tests/test_ai_assistant.py::test_ai_fallback_behavior_property - Attri...
+FAILED tests/test_ai_assistant.py::test_query_processor_intent_classification
+FAILED tests/test_auth.py::TestOAuthIntegration::test_oauth_integration_consistency_property
+FAILED tests/test_auth.py::TestOAuthIntegration::test_authenticated_user_state_property
+FAILED tests/test_auth.py::TestOAuthIntegration::test_profile_update_functionality
+FAILED tests/test_auth.py::TestOAuthIntegration::test_user_model_validation
+FAILED tests/test_enhanced_mapping.py::TestMapErrorHandling::test_service_resilience
+FAILED tests/test_security.py::TestDataSecurity::test_sensitive_data_encryption
+FAILED tests/test_security.py::TestSecureErrorHandling::test_error_information_sanitization
+FAILED tests/test_security.py::TestSecureErrorHandling::test_secure_logging_practices
+FAILED tests/test_setup.py::TestProjectSetup::test_database_initialization - ...
+FAILED tests/test_setup.py::TestProjectSetup::test_authentication_ui_visibility_property
+FAILED tests/test_setup.py::TestProjectSetup::test_user_model_creation - hypo...
+FAILED tests/test_setup.py::TestProjectSetup::test_campus_model_creation - hy...
+FAILED tests/test_ui_ux_enhancements.py::TestInteractiveFeedback::test_loading_state_feedback
+FAILED tests/test_ui_ux_enhancements.py::TestResponsiveDesign::test_content_reflow_behavior
+FAILED tests/test_ui_ux_enhancements.py::TestResponsiveDesign::test_responsive_layout_adaptation
+FAILED tests/test_ui_ux_enhancements.py::TestLoadingStateIndicators::test_loading_indicator_appropriateness
+FAILED tests/test_ui_ux_enhancements.py::TestLoadingStateIndicators::test_progress_calculation_accuracy
+ERROR tests/test_decorators.py::TestRequireAdmin::test_admin_allowed - Assert...
+ERROR tests/test_decorators.py::TestRequireAdmin::test_manager_blocked - Asse...
+ERROR tests/test_decorators.py::TestRequireAdmin::test_user_blocked - Asserti...
+ERROR tests/test_decorators.py::TestRequireManagerOrAdmin::test_admin_allowed
+ERROR tests/test_decorators.py::TestRequireManagerOrAdmin::test_manager_allowed
+ERROR tests/test_decorators.py::TestRequireManagerOrAdmin::test_user_blocked
+ERROR tests/test_decorators.py::TestRequireAuthenticated::test_unauthenticated_redirects_to_login
+23 failed, 116 passed, 5093 warnings, 7 errors in 21.98s

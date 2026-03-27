@@ -1,0 +1,54 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.14.3, pytest-7.4.3, pluggy-1.6.0 -- C:\Python314\python.exe
+cachedir: .pytest_cache
+hypothesis profile 'default' -> database=DirectoryBasedExampleDatabase(WindowsPath('C:/Sem VI/software engineering/capstone project/project/copy2/time_pass/.hypothesis/examples'))
+rootdir: C:\Sem VI\software engineering\capstone project\project\copy2\time_pass
+configfile: pytest.ini
+plugins: anyio-4.13.0, hypothesis-6.88.1
+collecting ... collected 55 items
+
+tests/test_setup.py::TestProjectSetup::test_app_creation PASSED          [  1%]
+tests/test_setup.py::TestProjectSetup::test_database_initialization PASSED [  3%]
+tests/test_setup.py::TestProjectSetup::test_authentication_ui_visibility_property FAILED [  5%]
+
+================================== FAILURES ===================================
+_________ TestProjectSetup.test_authentication_ui_visibility_property _________
+
+self = <tests.test_setup.TestProjectSetup object at 0x0000026EA6AC1810>
+client = <FlaskClient <Flask 'app'>>
+
+    @given(st.text(min_size=1, max_size=100))
+>   @settings(suppress_health_check=[HealthCheck.function_scoped_fixture])
+
+tests\test_setup.py:68: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <tests.test_setup.TestProjectSetup object at 0x0000026EA6AC1810>
+client = <FlaskClient <Flask 'app'>>, random_path = '0'
+
+    @given(st.text(min_size=1, max_size=100))
+    @settings(suppress_health_check=[HealthCheck.function_scoped_fixture])
+    def test_authentication_ui_visibility_property(self, client, random_path):
+        """
+        Property 1: Authentication UI Visibility
+        For any user visiting the application, login and signup options should be prominently displayed and accessible.
+    
+        **Feature: campus-explorer-enhancement, Property 1: Authentication UI Visibility**
+        **Validates: Requirements 1.1**
+        """
+        # Test the main page
+        response = client.get('/')
+>       assert response.status_code == 200
+E       assert 302 == 200
+E        +  where 302 = <WrapperTestResponse streamed [302 FOUND]>.status_code
+E       Falsifying example: test_authentication_ui_visibility_property(
+E           self=<tests.test_setup.TestProjectSetup object at 0x0000026EA6AC1810>,
+E           client=<FlaskClient <Flask 'app'>>,
+E           random_path='0',  # or any other generated value
+E       )
+
+tests\test_setup.py:79: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_setup.py::TestProjectSetup::test_authentication_ui_visibility_property
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!
+========================= 1 failed, 2 passed in 1.76s =========================
