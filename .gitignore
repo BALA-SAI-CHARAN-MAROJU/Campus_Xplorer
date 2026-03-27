@@ -12,6 +12,11 @@ build/
 .eggs/
 *.whl
 
+.env
+*.json
+__pycache__/
+*.pyc
+
 # ── Virtual environments ───────────────────────────────────────────────────────
 venv/
 .venv/
