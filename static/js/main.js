@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     setupScrollEvents();
     setupNotificationStyles();
+    setupMobileMenu();
 });
 
 // Set up scroll events
@@ -124,4 +125,39 @@ function setupNotificationStyles() {
         `;
         document.head.appendChild(style);
     }
+}
+
+// Set up mobile menu interactions
+function setupMobileMenu() {
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const closeBtn = document.getElementById('mobile-menu-close');
+    const drawer = document.getElementById('mobile-nav-drawer');
+    const overlay = document.getElementById('mobile-nav-overlay');
+    const navLinks = document.querySelectorAll('.mobile-nav-link');
+
+    if (!mobileBtn || !drawer || !overlay) return;
+
+    function openMenu() {
+        drawer.classList.add('open');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+    }
+
+    function closeMenu() {
+        drawer.classList.remove('open');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    mobileBtn.addEventListener('click', openMenu);
+    
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeMenu);
+    }
+    
+    overlay.addEventListener('click', closeMenu);
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
 }
