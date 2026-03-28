@@ -474,13 +474,16 @@
 
             .main-content {
                 margin-left: 0;
+                padding: 15px;
             }
 
             .stats-grid {
                 grid-template-columns: 1fr;
+                gap: 15px;
             }
             
             .header {
+                padding: 15px;
                 justify-content: flex-start;
             }
             
@@ -490,6 +493,58 @@
             
             .user-info > div:last-child {
                 display: none; /* Hide user name string on very small screens */
+            }
+
+            /* Table Mobile Optimizations */
+            .table-container {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                margin: 0 -20px;
+                padding: 0 20px;
+            }
+
+            .table th, .table td {
+                padding: 10px 12px;
+                font-size: 0.85rem;
+            }
+
+            /* Hide non-essential columns on mobile */
+            /* Users Table: Name (1), Email (2), Role (3), Campus (4), Last Login (5), Actions (6) */
+            #users-table td:nth-child(2),
+            #users-table td:nth-child(4),
+            #users-table td:nth-child(5),
+            #users-section th:nth-child(2),
+            #users-section th:nth-child(4),
+            #users-section th:nth-child(5) {
+                display: none;
+            }
+
+            /* Events Table: Name (1), Venue (2), Date (3), Time (4), Campus (5), Creator (6), Actions (7) */
+            #events-table td:nth-child(3),
+            #events-table td:nth-child(5),
+            #events-table td:nth-child(6),
+            #events-section th:nth-child(3),
+            #events-section th:nth-child(5),
+            #events-section th:nth-child(6) {
+                display: none;
+            }
+
+            /* Campuses Table: ID (1), Name (2), Coords (3), TZ (4), Status (5), Actions (6) */
+            #campuses-table td:nth-child(1),
+            #campuses-table td:nth-child(3),
+            #campuses-table td:nth-child(4),
+            #campuses-section th:nth-child(1),
+            #campuses-section th:nth-child(3),
+            #campuses-section th:nth-child(4) {
+                display: none;
+            }
+
+            /* Conversations Table: User (1), Context (2), Msgs (3), Created (4), Updated (5), Actions (6) */
+            #conversations-table td:nth-child(4),
+            #conversations-table td:nth-child(5),
+            #conversations-section th:nth-child(4),
+            #conversations-section th:nth-child(5) {
+                display: none;
             }
         }
     </style>
@@ -628,7 +683,7 @@
                             Add User
                         </button>
                     </div>
-                    <div style="overflow-x: auto;">
+                    <div class="table-container">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -663,7 +718,7 @@
                         </button>
                         {% endif %}
                     </div>
-                    <div style="overflow-x: auto;">
+                    <div class="table-container">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -698,7 +753,7 @@
                         </button>
                         {% endif %}
                     </div>
-                    <div style="overflow-x: auto;">
+                    <div class="table-container">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -726,7 +781,7 @@
                     <div class="section-header">
                         <h3 class="section-title">AI Conversations</h3>
                     </div>
-                    <div style="overflow-x: auto;">
+                    <div class="table-container">
                         <table class="table">
                             <thead>
                                 <tr>

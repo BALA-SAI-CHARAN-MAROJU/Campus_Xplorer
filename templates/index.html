@@ -899,7 +899,13 @@
         }
         
         .route-form .form-row {
-            align-items: flex-end; /* Align button to bottom */
+            align-items: stretch; /* Stretch children by default */
+        }
+        
+        @media (min-width: 769px) {
+            .route-form .form-row {
+                align-items: flex-end; /* Align to bottom on desktop */
+            }
         }
         
         .route-form select {
@@ -1491,7 +1497,7 @@
                         </select>
                     </div>
                     
-                    <div class="form-group" style="display: flex; align-items: flex-end;">
+                    <div class="form-group route-btn-group">
                         <button id="findRouteBtn" class="btn primary-btn" style="width: 100%;">Find Route</button>
                     </div>
                 </div>
@@ -1680,6 +1686,10 @@
     <script src="{{ url_for('static', filename='js/enhanced-map-init.js') }}"></script>
     <script src="{{ url_for('static', filename='js/campus-selector.js') }}"></script>
     <script src="{{ url_for('static', filename='js/map.js') }}"></script>
+    <!-- User role context for JS -->    
+    <script>
+        window.currentUserIsPrivileged = {{ 'true' if user and (user.is_admin or user.is_manager) else 'false' }};
+    </script>
     <script src="{{ url_for('static', filename='js/events.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
@@ -1950,11 +1960,12 @@
                 eventCard.innerHTML = `
                     <div class="event-header" style="padding: 15px 20px; background-color: ${headerColor}; color: white; display: flex; justify-content: space-between; align-items: center;">
                         <h3 style="margin: 0; font-size: 1.2rem;">${event.name}</h3>
+                        ${window.currentUserIsPrivileged ? `
                         <div class="event-actions">
                             <button class="delete-btn" data-event-id="${event.id}" style="background: none; border: none; color: white; cursor: pointer; font-size: 1rem; padding: 8px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); transition: all 0.2s ease;">
                                 <i class="fas fa-trash-alt"></i>
                             </button>
-                        </div>
+                        </div>` : ''}
                     </div>
                     <div class="event-details" style="padding: 15px 20px; border-bottom: 1px solid #dadce0; background-color: rgba(66, 133, 244, 0.05);">
                         <p style="margin: 8px 0; color: #5f6368; font-size: 0.9rem; display: flex; align-items: center;">
@@ -1983,28 +1994,32 @@
                     </div>
                 `;
                 
-                // Add event listener to delete button
-                eventCard.querySelector('.delete-btn').addEventListener('click', function() {
-                    const eventId = this.getAttribute('data-event-id');
-                    deleteEvent(eventId);
-                });
-                
                 // Add event listener to navigate button
                 eventCard.querySelector('.navigate-btn').addEventListener('click', function() {
                     const venueName = this.getAttribute('data-venue-name');
                     navigateToVenue(venueName);
                 });
                 
-                // Add hover effect to delete button
-                const deleteBtn = eventCard.querySelector('.delete-btn');
-                deleteBtn.addEventListener('mouseover', function() {
-                    this.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
-                    this.style.transform = 'scale(1.1)';
-                });
-                deleteBtn.addEventListener('mouseout', function() {
-                    this.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                    this.style.transform = 'scale(1)';
-                });
+                // Add event listener to delete button (privileged users only)
+                if (window.currentUserIsPrivileged) {
+                    const deleteBtn = eventCard.querySelector('.delete-btn');
+                    if (deleteBtn) {
+                        deleteBtn.addEventListener('click', function() {
+                            const eventId = this.getAttribute('data-event-id');
+                            deleteEvent(eventId);
+                        });
+                        
+                        // Add hover effect to delete button
+                        deleteBtn.addEventListener('mouseover', function() {
+                            this.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+                            this.style.transform = 'scale(1.1)';
+                        });
+                        deleteBtn.addEventListener('mouseout', function() {
+                            this.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                            this.style.transform = 'scale(1)';
+                        });
+                    }
+                }
                 
                 return eventCard;
             }

@@ -235,9 +235,10 @@ function createEventCard(event) {
     eventCard.innerHTML = `
         <div class="event-header">
             <h3>${event.name}</h3>
+            ${window.currentUserIsPrivileged ? `
             <div class="event-actions">
                 <button class="delete-btn" title="Delete Event"><i class="fas fa-trash-alt"></i></button>
-            </div>
+            </div>` : ''}
         </div>
         <div class="event-details">
             <p><i class="fas fa-map-marker-alt"></i> ${event.venue_name}</p>
@@ -260,10 +261,15 @@ function createEventCard(event) {
         navigateToVenue(venueName);
     });
     
-    // Add event listener to delete button
-    eventCard.querySelector('.delete-btn').addEventListener('click', () => {
-        deleteEvent(event.id);
-    });
+    // Only add delete listener for privileged users
+    if (window.currentUserIsPrivileged) {
+        const deleteBtn = eventCard.querySelector('.delete-btn');
+        if (deleteBtn) {
+            deleteBtn.addEventListener('click', () => {
+                deleteEvent(event.id);
+            });
+        }
+    }
     
     return eventCard;
 }
